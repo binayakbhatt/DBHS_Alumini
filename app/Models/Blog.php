@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Blog extends Model
 {
     use HasFactory;
+    protected $fillable =[
+        'date', 'title', 'slug', 'body', 'submitted_by',
+    ];
+
+    protected $casts =[
+        'date' =>'date'
+    ];
 }

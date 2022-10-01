@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\NewsStoreRequest;
+use App\Models\News as ModelsNews;
 use Illuminate\Http\Request;
 
 class News extends Controller
@@ -14,7 +16,7 @@ class News extends Controller
      */
     public function index()
     {
-        //
+        return view('news.index');
     }
 
     /**
@@ -24,7 +26,7 @@ class News extends Controller
      */
     public function create()
     {
-        //
+        return view ('news.create');
     }
 
     /**
@@ -33,9 +35,10 @@ class News extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(NewsStoreRequest $request)
     {
-        //
+        ModelsNews::create($request->validated());
+        return redirect()->route('news.index')->with('Success', 'News Added Succesfully');
     }
 
     /**
@@ -57,7 +60,7 @@ class News extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('news.edit');
     }
 
     /**
