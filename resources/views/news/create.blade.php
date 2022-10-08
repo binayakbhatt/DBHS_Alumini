@@ -8,80 +8,97 @@
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
+                <div class="px-36 py-12 bg-white border-b border-gray-200">
 
+                    {{-- <form method="POST" action="{{ route('news.store') }}">
+                        @csrf
 
-                    <form class="w-full max-w-lg p-16 mx-auto">
-                        <div class="flex mb-6">
-                            <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0"><label
-                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-first-name">
-                                    First Name
-                                </label><input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white"
-                                    id="grid-first-name" type="text" placeholder="Jane"></div>
-                            <div class="w-full md:w-1/2 px-3"><label
-                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-last-name">
-                                    Last Name
-                                </label><input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-last-name" type="text" placeholder="Doe"></div>
+                        <!-- Date -->
+                        <div>
+                            <x-input-label for="date" :value="__('Date')" />
+
+                            <x-text-input id="date" class=" block mt-2 w-auto" type="date" name="date"
+                                :value="old('date')" required autofocus />
+
+                            <x-input-error :messages="$errors->get('date')" class="mt-2" />
                         </div>
-                        <div class="flex flex-wrap -mx-3 mb-6">
-                            <div class="w-full px-3"><label
-                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-password">
-                                    Password
-                                </label><input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-password" type="password" placeholder="Password">
-                                <p class="text-red-500 text-xs italic hidden">
-                                    Remove &quot;.hidden&quot; class to use this to show any warning text/message...
-                                </p>
+
+                        <!-- Headline -->
+                        <div class="mt-4">
+                            <x-input-label for="headline" :value="__('Headline')" />
+
+                            <x-text-input id="headline" class="block mt-1 w-full" type="text" name="headline"
+                                :value="old('headline')" required />
+
+                            <x-input-error :messages="$errors->get('headline')" class="mt-2" />
+                        </div>
+
+                        <!-- Headline -->
+                        <div class="mt-4">
+
+                            <x-input-label for="body" :value="__('News Details')" />
+
+
+                            <x-text-input id="body" class="w-full h-56 resize-y text-justify m-0 p-1"
+                                type="text" name="body" :value="old('body')" required />
+
+                            <x-input-error :messages="$errors->get('body')" class="mt-2" />
+
+                        </div>
+                        <!-- Reporter -->
+                        <div class="mt-4">
+                            <x-input-label for="reporter" :value="__('News Reported By')" />
+
+                            <x-text-input id="reporter" class="block mt-1 w-full " type="text" name="reporter"
+                                :value="old('reporter')" />
+
+                            <x-input-error :messages="$errors->get('reporter')" class="mt-2" />
+                        </div>
+
+
+
+
+                        <div class="flex items-center justify-end mt-4">
+
+
+                            <x-primary-button class="ml-4">
+                                {{ __('Save') }}
+                            </x-primary-button>
+                        </div>
+                    </form> --}}
+                    <div class="flex items-center justify-center">
+                        <x-label for="Note: All fields are mandatory" class="text-xl" />
+                    </div>
+
+                    <x-form action="{{ route('news.store') }}" has-files>
+                        @csrf
+                        <x-label for="date" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                        <x-flat-pickr name="date"
+                            class=" block mt-2 w-auto rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                        <x-error field="date" class="text-red-500" />
+
+                        <x-label for="headline" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                        <x-input name="headline"
+                            class=" block mt-2 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                        <x-error field="headline" class="text-red-500" />
+
+                        <x-label for="body" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                        <x-textarea name="body"
+                            class=" block mt-2 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                        <x-error field="body" class="text-red-500">
+                            </x-textarea>
+
+                            <x-label for="reporter" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                            <x-input name="reporter"
+                                class=" block mt-2 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                            <x-error field="body" class="text-red-500" />
+                            <div class="flex items-center justify-end">
+                                <x-button class="mt-4 ">
+                                    Save
+                                </x-button>
                             </div>
-                        </div>
-                        <div class="flex flex-wrap -mx-3 mb-2">
-                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0"><label
-                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-city">
-                                    City
-                                </label><input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-city" type="text" placeholder="City"></div>
-                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0"><label
-                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-state">
-                                    State
-                                </label>
-                                <div class="relative"><select
-                                        class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="grid-state">
-                                        <option>State 1</option>
-                                        <option>State 2</option>
-                                        <option>State 3</option>
-                                    </select>
-                                    <div
-                                        class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
-                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg"
-                                            viewbox="0 0 20 20">
-                                            <path
-                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z">
-                                            </path>
-                                        </svg>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0"><label
-                                    class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
-                                    for="grid-zip">
-                                    Zip
-                                </label><input
-                                    class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-zip" type="text" placeholder="00000"></div>
-                        </div>
 
-                    </form>
+                    </x-form>
 
                 </div>
             </div>

@@ -17,16 +17,16 @@
                         @csrf
                         <div class="grid grid-cols-2 gap-6">
                             <div class="grid grid-rows-2 gap-6">
-                                {{-- <div>
+                                <div>
                                     <x-input-label for="name" :value="__('Name')" />
                                     <x-text-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                        value="{{ auth()->user()->name }}" autofocus />
+                                        value="{{ auth()->user()->name }}" :disabled=true autofocus />
                                 </div>
                                 <div>
                                     <x-input-label for="email" :value="__('Email')" />
                                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                        value="{{ auth()->user()->email }}" autofocus />
-                                </div> --}}
+                                        value="{{ auth()->user()->email }}" :disabled=true autofocus />
+                                </div>
                             </div>
                             <div class="grid grid-rows-2 gap-6">
                                 <div>

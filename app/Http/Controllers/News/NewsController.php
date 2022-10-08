@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\NewsStoreRequest;
-use App\Models\News as ModelsNews;
+use App\Http\Requests\NewsPostRequest;
+use App\Models\News;
 use Illuminate\Http\Request;
-
-class News extends Controller
+use Illuminate\Support\Str;
+class NewsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,8 @@ class News extends Controller
      */
     public function index()
     {
-        return view('news.index');
+        $news = News::all();
+        return view('news.index', compact('news'));
     }
 
     /**
@@ -35,10 +36,19 @@ class News extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(NewsStoreRequest $request)
+    public function store(NewsPostRequest $request)
     {
-        ModelsNews::create($request->validated());
-        return redirect()->route('news.index')->with('Success', 'News Added Succesfully');
+        
+
+        News::create([
+            'date' => $request->input('date'),
+            'headline' =>$request->input('headline'),
+            'slug'=> Str::slug($request->input('headline'), '-'),
+            'body' =>    $request->input('body'),
+            'reporter'=> $request->input('reporter'),
+        ]);
+
+        return redirect()->route('news.index')->with('success', 'News added Successfully');
     }
 
     /**
@@ -49,7 +59,8 @@ class News extends Controller
      */
     public function show($id)
     {
-        //
+        $news_single = News::where('id', $id)->first();
+        return view ('news.show',compact('news_single'));
     }
 
     /**
@@ -60,7 +71,8 @@ class News extends Controller
      */
     public function edit($id)
     {
-        return view('news.edit');
+        $news_single = News::where('id', $id)->first();
+        return view ('news.edit',compact('news_single'));
     }
 
     /**
@@ -70,9 +82,14 @@ class News extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(NewsPostRequest $request, $id)
     {
-        //
+        $news = News::findorFail($id);
+        $validated = $request->validated();
+        $news->fill($validated);
+        $news->save();
+        return redirect()->route('news.index')->with('success', 'News updated Successfully');
+    
     }
 
     /**
@@ -83,6 +100,9 @@ class News extends Controller
      */
     public function destroy($id)
     {
-        //
+        $news = News::findorFail($id);
+        $news->delete();
+        
+        return redirect()->back()->with('success', 'News deleted Successfully');
     }
 }

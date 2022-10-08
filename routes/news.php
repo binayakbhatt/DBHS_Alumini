@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\News\News;
+
+use App\Http\Controllers\News\NewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware'=>['auth', 'verified']], function(){
    
-    Route::resource('news', News::class)->only(['index', 'create', 'store']);
+    Route::resource('news', NewsController::class);
+   // ->only(['index', 'create','store', 'edit', 'destroy', 'update']);
+
 });
