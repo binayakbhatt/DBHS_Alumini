@@ -14,27 +14,27 @@
                     <div class="flex items-center justify-end">
                         <x-button href="{{ route('news.create') }}"> {{ __('Add News') }} </x-button>
                     </div>
-                    <x-table.table :headers="['Date', 'Headline', 'Body', 'Reporter', 'View', 'Edit', 'Delete']">
+                    <x-table.table :headers="['Date', 'Headline', 'Slug', 'Reporter', 'View', 'Edit', 'Delete']">
                         @foreach ($news as $item)
                             <tr class="bg-blue-200 border-b transition duration-300 ease-in-out hover:bg-blue-100">
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $item->date }}</td>
-                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4">
                                     {{ $item->headline }} </td>
-                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ $item->body }} </td>
-                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                <td class="text-sm text-gray-900 font-light px-6 py-4">
+                                    {{ $item->slug }} </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4">
                                     {{ $item->reporter }} </td>
-                                <td class="px-4 py-4 whitespace-nowrap">
+                                <td class="px-4 py-4">
                                     <a href="{{ route('news.show', $item->id) }}"
                                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg">View
                                     </a>
                                 </td>
-                                <td class="px-4 py-4 whitespace-nowrap">
+                                <td class="px-4 py-4">
                                     <a href="{{ route('news.edit', $item->id) }}"
                                         class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded shadow-lg">Edit
                                     </a>
-                                <td class="px-4 py-4 whitespace-wrap">
+                                <td class="px-4 py-4">
                                     <form action="{{ route('news.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

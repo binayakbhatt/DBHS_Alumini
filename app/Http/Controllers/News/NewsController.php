@@ -16,7 +16,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        $news = News::all();
+        $news = News::latest()->get();
         return view('news.index', compact('news'));
     }
 
@@ -45,7 +45,7 @@ class NewsController extends Controller
             'headline' =>$request->input('headline'),
             'slug'=> Str::slug($request->input('headline'), '-'),
             'body' =>    $request->input('body'),
-            'reporter'=> $request->input('reporter'),
+            'reporter'=> Str::ucfirst($request->input('reporter')),
         ]);
 
         return redirect()->route('news.index')->with('success', 'News added Successfully');

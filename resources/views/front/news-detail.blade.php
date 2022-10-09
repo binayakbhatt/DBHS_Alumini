@@ -1,9 +1,5 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('View') }}
-        </h2>
-    </x-slot>
+<x-front-layout>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -11,29 +7,29 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 
 
+
+
                     <div class="flex justify-center">
                         <div class="block rounded-lg shadow-lg bg-white max-w-full text-center">
                             <div class="py-3 px-6 border-b border-gray-300">
-                                <h5 class="text-gray-900 text-xl font-medium mb-2">{{ $news_single->headline }}</h5>
+                                <h5 class="text-gray-900 text-xl font-medium mb-2">{{ $news_detail->headline }}</h5>
 
                             </div>
                             <div class="p-6">
                                 <h5 class="text-gray-900 text-xl font-medium mb-2">
-                                    {{ \Carbon\Carbon::parse($news_single->date)->diffForHumans() }}</h5>
+                                    {{ \Carbon\Carbon::parse($news_detail->date)->diffForHumans() }}</h5>
                                 <p class="text-gray-700 text-base mb-4 text-justify">
-                                    {{ $news_single->body }}
+                                    {{ $news_detail->body }}
                                 </p>
 
                             </div>
                             <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
-                                {{ $news_single->reporter }}
+                                {{ $news_detail->reporter }}
                             </div>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>
     </div>
-</x-app-layout>
+</x-front-layout>
