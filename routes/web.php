@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\NewsController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -15,10 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('landing');
-});
-
+Route::get('/', [LandingController::class, 'latestNews'])->name('landing');
 Route::get('/newslist',[NewsController::class, 'list'])->name('front.news');
 Route::get('/news-detail/{slug}',[NewsController::class, 'news_detail'])->name('front.news-detail');
 
