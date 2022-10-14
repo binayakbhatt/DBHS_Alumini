@@ -5,7 +5,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
-                    <div class="flex items-center justify-center bg-blue-600 mb-5 shadow-lg p-3">
+                    <div
+                        class="flex items-center justify-center bg-gradient-to-r from-blue-500 to-blue-700 b-5 shadow-lg p-3">
                         <h1 class="text-2xl text-white font-bold"> News </h1>
                     </div>
 
@@ -13,7 +14,7 @@
                     @foreach ($news as $item)
                         <div class="flex justify-left mb-5">
                             <div class="block p-6 rounded-lg shadow-lg bg-white max-w-full">
-                                <h5 class="text-gray-900 text-xl text-center leading-tight font-medium mb-2">
+                                <h5 class="text-gray-900 text-xl text-center leading-tight font-bold mb-2">
                                     {{ $item->headline }}
                                 </h5>
                                 <h6 class="text-gray-900 text-xl text-center leading-tight font-medium mb-2">
@@ -32,27 +33,6 @@
                         </div>
                     @endforeach
 
-
-
-
-
-
-
-
-
-
-
-                    {{-- @foreach ($news as $item)
-                        <div class="flex justify-center">
-                            <div class="bg-white rounded-lg border border-gray-200 w-96 text-gray-900">
-                                <a href="{{ route('front.news-detail', $item->slug) }}"
-                                    class="block px-6 py-2 border-b border-gray-200 w-full rounded-lg bg-gray-100 text-black cursor-pointer">
-                                    {{ $item->headline }}
-                                </a>
-
-                            </div>
-                        </div>
-                    @endforeach --}}
                 </div>
 
             </div>

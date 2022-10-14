@@ -18,7 +18,7 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gradient-to-r from-violet-500 to-fuchsia-500">
         @include('layouts.front-nav')
 
 
