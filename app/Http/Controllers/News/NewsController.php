@@ -4,6 +4,7 @@ namespace App\Http\Controllers\News;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\NewsPostRequest;
+use App\Http\Requests\NewsUpdateRequest;
 use App\Models\News;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -38,13 +39,20 @@ class NewsController extends Controller
      */
     public function store(NewsPostRequest $request)
     {
-        
+        if($request->hasFile('image')){
+        $extension = $request->file('image')->extension();
+        $image_name = date('dmYHis').'.'.$extension;
+        $request->file('image')->move(public_path('images/news/'),$image_name);
+        $request->image = $image_name;
+        }
+      
 
         News::create([
             'date' => $request->input('date'),
             'headline' =>$request->input('headline'),
             'slug'=> Str::slug($request->input('headline'), '-'),
             'body' =>    $request->input('body'),
+            'image' => $request->image,
             'reporter'=> Str::ucfirst($request->input('reporter')),
         ]);
 
@@ -82,12 +90,37 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(NewsPostRequest $request, $id)
+    public function update(NewsUpdateRequest $request, $id)
     {
+       
         $news = News::findorFail($id);
-        $validated = $request->validated();
-        $news->fill($validated);
-        $news->save();
+        if($request->hasFile('image'))
+        {
+        if(file_exists(public_path('images/news/'.$news->image)) AND !empty($news->image)){
+
+            unlink(public_path('images/news/'.$news->image));
+        }
+        
+        $extension = $request->file('image')->extension();
+        $image_name = date('dmYHis').'.'.$extension;
+        $request->file('image')->move(public_path('images/news/'),$image_name);
+        $news->image =$image_name;
+
+        }
+
+        $news->date = $request->date;
+        $news->headline = $request->headline;
+        $news->slug = Str::slug($news->headline, '-');
+        $news->body = $request->body;
+        $news->reporter = Str::ucfirst($request->reporter);
+        $news->update();
+
+
+ 
+        //$news = News::findorFail($id);
+        // $validated = $request->validated();
+        // $news->fill($validated);
+        // $news->save();
         return redirect()->route('news.index')->with('success', 'News updated Successfully');
     
     }
@@ -101,6 +134,11 @@ class NewsController extends Controller
     public function destroy($id)
     {
         $news = News::findorFail($id);
+          if(file_exists(public_path('images/news/'.$news->image)) AND !empty($news->image)){
+            
+            unlink(public_path('images/news/'.$news->image));
+        }
+
         $news->delete();
         
         return redirect()->back()->with('success', 'News deleted Successfully');

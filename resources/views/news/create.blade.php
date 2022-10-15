@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('News') }}
+            {{ __('Add News') }}
         </h2>
     </x-slot>
 
@@ -11,32 +11,34 @@
                 <div class="px-12 py-12 bg-white border-b border-gray-200">
 
 
-                    <div class="flex items-center justify-center">
-                        <x-label for="Note: All fields are mandatory" class="text-xl" />
-                    </div>
+
 
                     <x-form action="{{ route('news.store') }}" has-files>
                         @csrf
-                        <x-label for="date" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+
+                        <x-input-label for="date" :value="__('Date & Time*')" />
                         <x-flat-pickr name="date"
-                            class=" block mt-2 w-auto rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                            class=" block my-3 w-auto rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
                         <x-error field="date" class="text-red-500" />
 
-                        <x-label for="headline" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                        <x-input-label for="headline" :value="__('Headline*')" />
                         <x-input name="headline"
-                            class=" block mt-2 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                            class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
                         <x-error field="headline" class="text-red-500" />
 
-                        <x-label for="body" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                        <x-input-label for="body" :value="__('Body*')" />
                         <x-textarea name="body" row="10"
-                            class=" block mt-2 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-56" />
+                            class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-56" />
                         <x-error field="body" class="text-red-500">
                             </x-textarea>
-
-                            <x-label for="reporter" class=" block mt-2 w-auto font-medium text-sm text-blue-500" />
+                            <x-input-label for="image" :value="__('Image')" />
+                            <x-input name="image" type="file"
+                                class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                            <x-error field="image" class="text-red-500" />
+                            <x-input-label for="reporter" :value="__('Reporter*')" />
                             <x-input name="reporter"
-                                class=" block mt-2 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
-                            <x-error field="body" class="text-red-500" />
+                                class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                            <x-error field="reporter" class="text-red-500" />
                             <div class="flex items-center justify-end">
                                 <x-button class="mt-4 ">
                                     Save

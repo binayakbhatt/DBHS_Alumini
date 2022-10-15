@@ -21,10 +21,17 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-end space-x-8">
+            <div class="flex items-center justify-end">
+                @if (!Auth::check())
+                    <x-button class=" bg-orange-500 hover:bg-orange-700" href="{{ route('login') }}">
+                        {{ __('Admin Login') }}
+                    </x-button>
+                @else
+                    <x-button class=" bg-red-500 hover:bg-red-700" href="{{ route('logout') }}">
+                        {{ __('Logout') }}
+                    </x-button>
+                @endif
 
-                <x-button class="bg-orange-500 hover:bg-orange-700" href="{{ route('login') }}"> {{ __('Login') }}
-                </x-button>
             </div>
 
 
@@ -48,10 +55,27 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-
             <x-responsive-nav-link :href="route('front.news')" :active="request()->routeIs('front.news')">
                 {{ __('News') }}
             </x-responsive-nav-link>
+
+        </div>
+
+        <!-- Responsive Settings Options -->
+        <div class="pt-4 pb-1 border-t border-gray-200">
+
+            <div class="mt-3 space-y-1">
+                <!-- Authentication -->
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+
+                    <x-responsive-nav-link :href="route('logout')"
+                        onclick="event.preventDefault();
+                                        this.closest('form').submit();">
+                        {{ __('Log Out') }}
+                    </x-responsive-nav-link>
+                </form>
+            </div>
         </div>
     </div>
 </nav>

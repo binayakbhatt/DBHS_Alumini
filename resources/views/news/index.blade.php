@@ -39,7 +39,7 @@
                                         @csrf
                                         @method('DELETE')
                                         <button
-                                            class="px-3 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-lg">
+                                            class=" bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded shadow-lg">
                                             Delete </button>
                                     </form>
                                 </td>

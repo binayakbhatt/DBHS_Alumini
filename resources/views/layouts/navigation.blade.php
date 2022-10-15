@@ -5,7 +5,7 @@
             <div class="flex">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
-                    <a href="{{ route('dashboard') }}">
+                    <a href="/">
                         <x-application-logo class="block h-10 w-auto fill-current text-gray-600" />
                     </a>
                 </div>
@@ -33,7 +33,7 @@
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
 
-                    <button class="px-3 bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded shadow-lg">
+                    <button class=" bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded shadow-lg">
                         Logout</button>
                 </form>
             </div>
@@ -105,10 +105,7 @@
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
-            <div class="px-4">
-                <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
-            </div>
+
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->

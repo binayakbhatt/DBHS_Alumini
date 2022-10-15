@@ -20,13 +20,19 @@
                             <div class="p-6">
                                 <h5 class="text-gray-900 text-xl font-medium mb-2">
                                     {{ \Carbon\Carbon::parse($news_single->date)->diffForHumans() }}</h5>
-                                <p class="text-gray-700 text-base mb-4 text-justify">
+                                @if ($news_single->image)
+                                    <img src="{{ asset('images/news/' . $news_single->image) }}"
+                                        alt="{{ $news_single->slug }}" class="w-full rounded-lg shadow-lg">
+                                @endif
+
+
+                                <p class="text-gray-700 text-base my-4 text-justify">
                                     {{ $news_single->body }}
                                 </p>
 
                             </div>
                             <div class="py-3 px-6 border-t border-gray-300 text-gray-600">
-                                {{ $news_single->reporter }}
+                                This news is reported by {{ $news_single->reporter }}
                             </div>
                         </div>
                     </div>
