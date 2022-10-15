@@ -19,20 +19,23 @@
 
 
                 </div>
-            </div>
 
-            <div class="flex items-center justify-end">
+            </div>
+            <div class="flex items-end justify-end">
                 @if (!Auth::check())
                     <x-button class=" bg-orange-500 hover:bg-orange-700" href="{{ route('login') }}">
                         {{ __('Admin Login') }}
                     </x-button>
                 @else
-                    <x-button class=" bg-red-500 hover:bg-red-700" href="{{ route('logout') }}">
-                        {{ __('Logout') }}
-                    </x-button>
-                @endif
+                    <form action="{{ route('logout') }}" method="POST">
+                        @csrf
 
+                        <button class=" bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded shadow-lg">
+                            Logout</button>
+                    </form>
+                @endif
             </div>
+
 
 
 
@@ -66,15 +69,18 @@
 
             <div class="mt-3 space-y-1">
                 <!-- Authentication -->
-                <form method="POST" action="{{ route('logout') }}">
-                    @csrf
+                @if (Auth::check())
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
 
-                    <x-responsive-nav-link :href="route('logout')"
-                        onclick="event.preventDefault();
+                        <x-responsive-nav-link :href="route('logout')"
+                            onclick="event.preventDefault();
                                         this.closest('form').submit();">
-                        {{ __('Log Out') }}
-                    </x-responsive-nav-link>
-                </form>
+                            {{ __('Log Out') }}
+                        </x-responsive-nav-link>
+                    </form>
+                @endif
+
             </div>
         </div>
     </div>

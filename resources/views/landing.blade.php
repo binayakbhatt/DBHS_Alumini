@@ -7,13 +7,16 @@
                 <div class="p-6 bg-gradient-to-r from-violet-500 to-fuchsia-500">
 
 
+
                     <div class="flex items-center justify-center m-5 p-5 ">
-                        <div class="text-5xl font-bold">Don Bosco School Alumni Association,
-                            Haflong </div>
+                        <h1 class="text-5xl font-bold drop-shadow-xl">Don Bosco School Alumni Association,
+                            Haflong </h1>
                     </div>
 
 
-                    <div class='flex items-center justify-center pt-8'>
+
+
+                    <div class='flex items-center justify-center p-5'>
                         <div class="rounded-xl border p-5 shadow-md  bg-white">
                             <div class="flex w-full items-center justify-between border-b pb-3">
                                 <div class="flex items-center space-x-3">

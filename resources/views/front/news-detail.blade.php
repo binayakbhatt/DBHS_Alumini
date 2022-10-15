@@ -12,13 +12,17 @@
                     <div class="flex justify-center">
                         <div class="block rounded-lg shadow-lg bg-white max-w-full text-center">
                             <div class="py-3 px-6 border-b border-gray-300">
-                                <h5 class="text-gray-900 text-xl font-medium mb-2">{{ $news_detail->headline }}</h5>
+                                <h1 class="text-gray-900 text-xl font-medium my-2">{{ $news_detail->headline }}</h1>
 
                             </div>
                             <div class="p-6">
                                 <h5 class="text-gray-900 text-xl font-medium mb-2">
                                     {{ \Carbon\Carbon::parse($news_detail->date)->diffForHumans() }}</h5>
-                                <p class="text-gray-700 text-base mb-4 text-justify">
+                                @if ($news_detail->image)
+                                    <img src="{{ asset('images/news/' . $news_detail->image) }}"
+                                        alt="{{ $news_detail->slug }}" class="w-full rounded-lg shadow-lg">
+                                @endif
+                                <p class="text-gray-700 text-base my-4 text-justify">
                                     {{ $news_detail->body }}
                                 </p>
 
