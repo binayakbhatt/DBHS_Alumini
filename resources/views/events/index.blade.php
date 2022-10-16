@@ -1,7 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('News') }}
+            {{ __('Event') }}
         </h2>
     </x-slot>
 
@@ -12,30 +12,33 @@
 
                     <x-success-message class="mb-4" />
                     <div class="flex items-center justify-end">
-                        <x-button href="{{ route('news.create') }}"> {{ __('Add News') }} </x-button>
+                        <x-button href="{{ route('events.create') }}"> {{ __('Add Event') }} </x-button>
                     </div>
-                    <x-table.table :headers="['Date', 'Headline', 'Slug', 'Reporter', 'View', 'Edit', 'Delete']">
-                        @foreach ($news as $item)
+                    <x-table.table :headers="['Name', 'Start Date', 'End Date', 'Location', 'Slug', 'View', 'Edit', 'Delete']">
+                        @foreach ($events as $item)
                             <tr class="bg-blue-200 border-b transition duration-300 ease-in-out hover:bg-blue-100">
-                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ Carbon\Carbon::parse($item->date)->format('d-m-Y') }}</td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
-                                    {{ $item->headline }} </td>
+                                    {{ $item->name }} </td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ Carbon\Carbon::parse($item->start_date)->format('d-m-Y His') }}</td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                                    {{ Carbon\Carbon::parse($item->end_date)->format('d-m-Y His') }}</td>
+                                <td class="text-sm text-gray-900 font-light px-6 py-4">
+                                    {{ $item->location }} </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                     {{ $item->slug }} </td>
-                                <td class="text-sm text-gray-900 font-light px-6 py-4">
-                                    {{ $item->reporter }} </td>
+
                                 <td class="px-4 py-4">
-                                    <a href="{{ route('news.show', $item->slug) }}"
+                                    <a href="{{ route('events.show', $item->slug) }}"
                                         class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded shadow-lg">View
                                     </a>
                                 </td>
                                 <td class="px-4 py-4">
-                                    <a href="{{ route('news.edit', $item->id) }}"
+                                    <a href="{{ route('events.edit', $item->id) }}"
                                         class="bg-orange-500 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded shadow-lg">Edit
                                     </a>
                                 <td class="px-4 py-4">
-                                    <form action="{{ route('news.destroy', $item->id) }}" method="POST">
+                                    <form action="{{ route('events.destroy', $item->id) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button

@@ -9,6 +9,13 @@ class Event extends Model
 {
     use HasFactory;
     public $fillable = [
-        'name', 'date', ''
+        'name', 'start_date','end_date', 'slug', 'duration', 'location', 'description'
+    ];
+
+    public $casts =[
+
+        'start_date' => 'date',
+        'end_date' => 'date'
+
     ];
 }

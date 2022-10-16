@@ -17,8 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug');
-            $table->string('date');
-            $table->int('duration')->nullable;
+            $table->string('start_date');
+            $table->string('end_date');
+            $table->integer('duration')->nullable;
             $table->string('location')->nullable;
             $table->text('description');
             $table->timestamps();

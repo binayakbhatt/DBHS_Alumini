@@ -65,9 +65,9 @@ class NewsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        $news_single = News::where('id', $id)->first();
+        $news_single = News::where('slug', $slug)->first();
         return view ('news.show',compact('news_single'));
     }
 

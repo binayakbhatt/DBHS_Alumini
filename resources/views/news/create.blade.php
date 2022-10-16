@@ -31,6 +31,7 @@
                             class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 h-56" />
                         <x-error field="body" class="text-red-500">
                             </x-textarea>
+
                             <x-input-label for="image" :value="__('Image')" />
                             <x-input name="image" type="file"
                                 class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
