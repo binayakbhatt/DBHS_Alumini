@@ -29,7 +29,7 @@
                                     class="flex items-center justify-center text-white text-xl leading-tight font-medium mb-2 bg-blue-900 p-3">
                                     Total Events</h5>
                                 <p class="flex items-center justify-center text-gray-900 text-5xl p-3">
-                                    {{ $news }}
+                                    {{ $event }}
 
                             </div>
                         </div>

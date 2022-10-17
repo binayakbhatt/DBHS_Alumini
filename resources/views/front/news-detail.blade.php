@@ -17,7 +17,7 @@
                             </div>
                             <div class="p-6">
                                 <h5 class="text-gray-900 text-xl font-medium mb-2">
-                                    {{ \Carbon\Carbon::parse($news_detail->date)->diffForHumans() }}</h5>
+                                   {{ Carbon\Carbon::parse($news_detail->date)->format('d-m-Y') }}</h5>
                                 @if ($news_detail->image)
                                     <img src="{{ asset('images/news/' . $news_detail->image) }}"
                                         alt="{{ $news_detail->slug }}" class="w-full rounded-lg shadow-lg">

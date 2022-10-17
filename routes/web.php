@@ -16,15 +16,15 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', [LandingController::class, 'latestNews'])->name('landing');
+//front
+Route::get('/', [LandingController::class, 'latest'])->name('landing');
 Route::get('/newslist',[NewsController::class, 'list'])->name('front.news');
 Route::get('/news-detail/{slug}',[NewsController::class, 'news_detail'])->name('front.news-detail');
 
 
 
 
-
+//dashboard & profile
 Route::group(['middleware'=>['auth', 'verified']], function(){
     Route::get('/dashboard',[DashboardController::class, 'display_count'] )->name('dashboard');
 

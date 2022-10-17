@@ -44,7 +44,6 @@ class EventController extends Controller
             'slug' => Str::slug($request->name, '-'),
             'start_date' => $request->start_date,
             'end_date' => $request->end_date,
-            'duration' =>$request->duration,
             'location' => $request->location,
             'description' => $request->description,
         ]);
@@ -103,5 +102,6 @@ class EventController extends Controller
     {
         $events = Event::findorFail($id);
         $events->delete();
+         return redirect()->back()->with('success', 'Event deleted Successfully');
     }
 }

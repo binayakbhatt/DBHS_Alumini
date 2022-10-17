@@ -21,10 +21,13 @@
                 </div>
 
             </div>
-            <div class="flex items-end justify-end">
+            <div class="flex items-end justify-end space-x-4">
                 @if (!Auth::check())
-                    <x-button class=" bg-orange-500 hover:bg-orange-700" href="{{ route('login') }}">
-                        {{ __('Admin Login') }}
+                    <x-button href="{{ route('login') }}">
+                        {{ __('Login') }}
+                    </x-button>
+                    <x-button href="{{ route('register') }}">
+                        {{ __('Register') }}
                     </x-button>
                 @else
                     <form action="{{ route('logout') }}" method="POST">

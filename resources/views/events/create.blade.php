@@ -30,11 +30,7 @@
                             class=" block my-3 w-auto rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
                         <x-error field="end_date" class="text-red-500" />
 
-                        <x-input-label for="duration" :value="__('Duration* (in hours)')" />
-                        <x-input name="duration" type="number"
-                            class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
-                        <x-error field="duration" class="text-red-500" />
-
+                      
                         <x-input-label for="location" :value="__('Location*')" />
                         <x-input name="location"
                             class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />

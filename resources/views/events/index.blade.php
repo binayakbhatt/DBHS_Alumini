@@ -20,9 +20,9 @@
                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                     {{ $item->name }} </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ Carbon\Carbon::parse($item->start_date)->format('d-m-Y His') }}</td>
+                                    {{ Carbon\Carbon::parse($item->start_date)->format('d-m-Y') }}</td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-                                    {{ Carbon\Carbon::parse($item->end_date)->format('d-m-Y His') }}</td>
+                                    {{ Carbon\Carbon::parse($item->end_date)->format('d-m-Y') }}</td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
                                     {{ $item->location }} </td>
                                 <td class="text-sm text-gray-900 font-light px-6 py-4">
