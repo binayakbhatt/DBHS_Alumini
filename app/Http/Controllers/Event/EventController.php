@@ -14,9 +14,14 @@ class EventController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
-     */     
+     */    
+    
+   
+
     public function index()
     {
+
+        $this->authorize('admin');
         $events = Event::latest()->get();
         return view('events.index', compact('events'));
     }
@@ -28,6 +33,7 @@ class EventController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin');
         return view ('events.create');
     }
 
@@ -39,6 +45,7 @@ class EventController extends Controller
      */
     public function store(EventPostRequest $request)
     {
+        $this->authorize('admin');
         Event::create([
             'name' => Str::ucfirst($request->name),
             'slug' => Str::slug($request->name, '-'),
@@ -58,6 +65,7 @@ class EventController extends Controller
      */
     public function show($slug)
     {
+        $this->authorize('admin');
         $event_single = Event::where('slug', $slug)->first();
         return view ('events.show',compact('event_single'));
     }
@@ -70,6 +78,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('admin');
         $event_single = Event::where('id', $id)->first();
         return view ('events.edit',compact('event_single'));
     }
@@ -83,6 +92,7 @@ class EventController extends Controller
      */
     public function update(EventUpdateRequest $request, $id)
     {
+        $this->authorize('admin');
         $events = Event::findorFail($id);
         $validated = $request->validated();
         $events->fill($validated);
@@ -100,6 +110,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('admin');
         $events = Event::findorFail($id);
         $events->delete();
          return redirect()->back()->with('success', 'Event deleted Successfully');

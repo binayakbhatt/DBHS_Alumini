@@ -3,8 +3,10 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\NewsController;
+
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -24,14 +26,24 @@ Route::get('/news-detail/{slug}',[NewsController::class, 'news_detail'])->name('
 
 
 
-//dashboard & profile
-Route::group(['middleware'=>['auth', 'verified']], function(){
+//dashboard
+Route::group(['middleware'=>['auth', 'can:admin']], function(){
     Route::get('/dashboard',[DashboardController::class, 'display_count'] )->name('dashboard');
 
+    
+
+});
+//profile
+Route::group(['middleware'=>['auth']], function(){
+    
     Route::view('profile', 'profile')->name('profile');
     Route::put('profile',[ProfileController::class,'update'])->name('profile.update');
 
 });
+
+
+
+
 
 require __DIR__.'/auth.php';
 require __DIR__.'/news.php';

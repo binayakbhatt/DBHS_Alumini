@@ -9,6 +9,9 @@ use Illuminate\Http\Request;
 
 class LandingController extends Controller
 {
+    
+   
+
     public function latest(){
         $latest_news= News::latest()->first();
         $latest_event = Event::latest()->first();

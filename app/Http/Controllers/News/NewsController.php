@@ -15,8 +15,11 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   
+    
+     public function index()
     {
+        $this->authorize('admin');
         $news = News::latest()->get();
         return view('news.index', compact('news'));
     }
@@ -28,6 +31,7 @@ class NewsController extends Controller
      */
     public function create()
     {
+        $this->authorize('admin');
         return view ('news.create');
     }
 
@@ -39,6 +43,7 @@ class NewsController extends Controller
      */
     public function store(NewsPostRequest $request)
     {
+        $this->authorize('admin');
         if($request->hasFile('image')){
         $extension = $request->file('image')->extension();
         $image_name = date('dmYHis').'.'.$extension;
@@ -67,6 +72,7 @@ class NewsController extends Controller
      */
     public function show($slug)
     {
+        $this->authorize('admin');
         $news_single = News::where('slug', $slug)->first();
         return view ('news.show',compact('news_single'));
     }
@@ -79,6 +85,7 @@ class NewsController extends Controller
      */
     public function edit($id)
     {
+        $this->authorize('admin');
         $news_single = News::where('id', $id)->first();
         return view ('news.edit',compact('news_single'));
     }
@@ -92,7 +99,7 @@ class NewsController extends Controller
      */
     public function update(NewsUpdateRequest $request, $id)
     {
-       
+        $this->authorize('admin');
         $news = News::findorFail($id);
         if($request->hasFile('image'))
         {
@@ -133,6 +140,7 @@ class NewsController extends Controller
      */
     public function destroy($id)
     {
+        $this->authorize('admin');
         $news = News::findorFail($id);
           if(file_exists(public_path('images/news/'.$news->image)) AND !empty($news->image)){
             
