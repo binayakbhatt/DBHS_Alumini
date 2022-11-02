@@ -13,6 +13,6 @@ class Blog extends Model
     ];
 
     protected $casts =[
-        'date' =>'date'
+        'date' =>'datetime'
     ];
 }

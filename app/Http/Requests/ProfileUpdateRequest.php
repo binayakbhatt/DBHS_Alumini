@@ -25,6 +25,17 @@ class ProfileUpdateRequest extends FormRequest
     {
         return [
             'password'=> 'required|min:8|confirmed',
+            'batch'=>'required|max:4|string',
+            'mobile' => 'string|nullable',
+            'image' => 'image|mimes:png,jpg|max:2048|nullable',
+            'occupation' => 'string|nullable',
+            'current_residence' =>'string|nullable',
+            'city' =>'string|nullable',
+            'state' =>'string|nullable',
+            'country' =>'string|nullable',
+            'pin_code' =>'string|nullable',
+            'aboutme' =>'text|nullable',
+
 
         ];
     }
