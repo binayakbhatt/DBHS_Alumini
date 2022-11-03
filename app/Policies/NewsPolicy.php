@@ -31,9 +31,10 @@ class NewsPolicy
      * @param  \App\Models\News  $news
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, News $news)
+    public function view(User $user)
     {
-         return $this->viewAny($user);
+        return $this->viewAny($user);
+     
     }
 
     /**
@@ -55,7 +56,7 @@ class NewsPolicy
      * @param  \App\Models\News  $news
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, News $news)
+    public function update(User $user)
     {
          return $this->viewAny($user);
     }
@@ -67,7 +68,7 @@ class NewsPolicy
      * @param  \App\Models\News  $news
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, News $news)
+    public function delete(User $user)
     {
          return $this->viewAny($user);
     }
@@ -79,7 +80,7 @@ class NewsPolicy
      * @param  \App\Models\News  $news
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, News $news)
+    public function restore(User $user)
     {
          return $this->viewAny($user);
     }

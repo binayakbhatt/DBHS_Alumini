@@ -27,12 +27,12 @@ Route::get('/news-detail/{slug}',[NewsController::class, 'news_detail'])->name('
 
 
 //dashboard
-Route::group(['middleware'=>['auth','verfied']], function(){
+Route::group(['middleware'=>['auth','verified']], function(){
 Route::get('/dashboard',[DashboardController::class, 'display_count'] )->name('dashboard');
 
 });
 //profile
-Route::group(['middleware'=>['auth','verfied']], function(){
+Route::group(['middleware'=>['auth','verified']], function(){
     
     Route::view('profile', 'profile')->name('profile');
     Route::put('profile',[ProfileController::class,'update'])->name('profile.update');
