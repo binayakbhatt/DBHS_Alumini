@@ -9,6 +9,7 @@ class ProfileController extends Controller
 {
     public function update(ProfileUpdateRequest $request){
 
+    
         if($request->hasFile('image')){
         $extension = $request->file('image')->extension();
         $image_name = date('dmYHis').'.'.$extension;
@@ -17,7 +18,7 @@ class ProfileController extends Controller
         }
         
         
-        $password = $request->input('password');
+        //$password = $request->input('password');
         $batch = $request->input('batch');
         $mobile = $request->input('mobile');
         $occupation = $request->input('occupation');
@@ -26,13 +27,13 @@ class ProfileController extends Controller
         $city =  $request->input('city');
         $state =  $request->input('state');
         $country =  $request->input('country');
-        $pincode =  $request->input('pincode');
+        $pincode =  $request->input('pin_code');
         $aboutme =  $request->input('aboutme');
 
        
 
        $updated= auth()->user()->update([
-            'password' =>bcrypt($password),
+           // 'password' =>bcrypt($password),
             'batch'=> $batch,
             'mobile' => $mobile,
             'image' => $image,
