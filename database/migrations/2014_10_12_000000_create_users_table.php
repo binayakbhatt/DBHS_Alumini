@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('occupation')->nullable();
             $table->string('current_residence')->nullable();
-            $table->string('city')->nullable();
+            $table->string('city');
             $table->string('state')->nullable();
             $table->string('country')->nullable();
             $table->string('pin_code')->nullable();

@@ -81,8 +81,8 @@ class NewsController extends Controller
      */
     public function show($slug)
     {
-       $this->authorize('view', News::class);
-        $news_single = News::where('slug', $slug)->first();
+        $this->authorize('view', News::class);
+        $news_single = $this->newsservice->singleNewsBySlug($slug);
         return view ('news.show',compact('news_single'));
     }
 
@@ -96,7 +96,7 @@ class NewsController extends Controller
     {
     
         $this->authorize('update', News::class);
-        $news_single = News::where('id', $id)->first();
+        $news_single = $this->newsservice->singleNewsByID($id);
         return view ('news.edit',compact('news_single'));
     }
 
@@ -131,8 +131,6 @@ class NewsController extends Controller
         $news->body = $request->body;
         $news->reporter = Str::ucfirst($request->reporter);
         $news->update();
-
-
  
         //$news = News::findorFail($id);
         // $validated = $request->validated();

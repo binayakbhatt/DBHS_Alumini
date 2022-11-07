@@ -10,8 +10,13 @@ class NewsService {
         return News::latest()->get();
     }
 
-    public function singleNews(){
-
+    public function singleNewsById($id){
+        return $news_single = News::where('id', $id)->first();
     }
+
+    public function singleNewsBySlug($slug){
+        return $news_single = News::where('slug', $slug)->first();
+    }
+
 
 };
