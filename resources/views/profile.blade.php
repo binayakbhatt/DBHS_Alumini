@@ -12,7 +12,7 @@
 
                     <x-success-message />
 
-                    <form method="POST" action="{{ route('profile.update') }}">
+                    <x-form action="{{ route('profile.update') }}" has-files>
                         @method('PUT')
                         @csrf
                         <div class="grid grid-cols-2 gap-6">
@@ -27,6 +27,33 @@
                                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                                         value="{{ auth()->user()->email }}" :disabled=true autofocus />
                                 </div>
+                                <div>
+                                    <x-input-label for="dob" :value="__('Date of Birth')" />
+                                    <x-flat-pickr name="date" value="{{ auth()->user()->dob }}"
+                                        class=" block my-3 w-auto rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                                </div>
+                                <div>
+                                    @if (auth()->user()->image)
+                                        <img class="inline object-cover w-16 h-16 mr-2 rounded-full"
+                                            src="{{ asset('images/profile/' . auth()->user()->image) }}"
+                                            alt="Profile image" />
+                                    @else
+                                        <svg class="inline object-cover w-16 h-16 mr-2 rounded-full"
+                                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                            stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                                        </svg>
+                                    @endif
+                                </div>
+
+                                <div>
+                                    <x-input-label for="image" :value="__('Profile Picture')" />
+                                    <x-input name="image" type="file"
+                                        class=" block my-3 w-full rounded-md shadow-sm border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50" />
+                                    <x-error field="image" class="text-red-500" />
+                                </div>
+
                             </div>
                             {{-- <div class="grid grid-rows-2 gap-6">
                                 <div>
@@ -116,7 +143,7 @@
                         {{ __('Update') }}
                     </x-primary-button>
                 </div>
-                </form>
+                </x-form>
             </div>
         </div>
     </div>

@@ -22,6 +22,7 @@ class ProfileController extends Controller
         $batch = $request->input('batch');
         $mobile = $request->input('mobile');
         $occupation = $request->input('occupation');
+        $dob =$request->input('dob');
         $image = $request->image;
         $current_residence =  $request->input('current_residence');
         $city =  $request->input('city');
@@ -38,6 +39,7 @@ class ProfileController extends Controller
             'mobile' => $mobile,
             'image' => $image,
             'occupation'=> $occupation,
+            'dob'=>$dob,
             'current_residence' => $current_residence,
             'city' => $city,
             'state' => $state,

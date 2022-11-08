@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('user_type')->nullable();
             $table->string('batch', 4);
             $table->string('mobile',10)->nullable();
+            $table->date('dob')->nullable();
             $table->string('image')->nullable();
             $table->string('occupation')->nullable();
             $table->string('current_residence')->nullable();

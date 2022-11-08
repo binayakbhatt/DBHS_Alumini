@@ -22,6 +22,7 @@ class User extends Authenticatable
         'email',
         'password',
         'user_type',
+        'dob',
         'batch',
         'mobile',
         'image',
@@ -51,5 +52,6 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'dob'=>'date',
     ];
 }
