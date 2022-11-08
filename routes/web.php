@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\NewsController;
@@ -22,6 +23,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [LandingController::class, 'latest'])->name('landing');
 Route::get('/newslist',[NewsController::class, 'list'])->name('front.news');
 Route::get('/news-detail/{slug}',[NewsController::class, 'news_detail'])->name('front.news-detail');
+Route::get('/alumni',[AlumniController::class, 'getAlumni'] )->name('front.alumni');
+Route::get('/alumni-detail/{id}',[AlumniController::class, 'alumni_detail'])->name('front.alumni-detail');
 
 
 
