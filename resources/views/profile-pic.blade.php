@@ -23,6 +23,10 @@
                             <x-error field="image" class="text-red-500" />
                         </div>
 
+                        <p class="text-justify mt-4">
+                            Please note: Only jpg and png image allowed. Maximum size : 2048 kb
+                        </p>
+
 
                         <div class="flex items-center justify-end m-4">
                             <x-primary-button class="ml-3">

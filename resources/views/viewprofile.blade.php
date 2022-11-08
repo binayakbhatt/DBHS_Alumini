@@ -75,7 +75,7 @@
                                     <div class="text-gray-700">
                                         <div class="grid md:grid-cols-2 text-sm">
                                             <div class="grid grid-cols-2">
-                                                <div class="px-4 py-2 font-semibold">First Name</div>
+                                                <div class="px-4 py-2 font-semibold">Name</div>
                                                 <div class="px-4 py-2">{{ auth()->user()->name }}</div>
                                             </div>
                                             <div class="grid grid-cols-2">
