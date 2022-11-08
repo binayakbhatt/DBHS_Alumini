@@ -34,8 +34,13 @@ Route::get('/dashboard',[DashboardController::class, 'display_count'] )->name('d
 //profile
 Route::group(['middleware'=>['auth','verified']], function(){
     
+    Route::view('viewprofile', 'viewprofile')->name('viewprofile');
     Route::view('profile', 'profile')->name('profile');
     Route::put('profile',[ProfileController::class,'update'])->name('profile.update');
+    Route::view('change-password', 'change-password')->name('change-password');
+    Route::put('change-password', [ProfileController::class, 'passwordUpdate'])->name('password.change');
+    Route::view('profile-pic', 'profile-pic')->name('profile-pic');
+    Route::put('profile-pic', [ProfileController::class, 'changeProfilepic'])->name('profile.change');
 
 });
 

@@ -24,11 +24,11 @@ class ProfileUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //'password'=> 'required|min:8|confirmed',
+           
             'batch'=>'required|max:4|string',
             'mobile' => 'string|nullable',
             'dob'=> 'date|nullable',
-            'image' => 'image|mimes:png,jpg|max:2048|nullable',
+            //'image' => 'image|mimes:png,jpg|max:2048|nullable',
             'occupation' => 'string|nullable',
             'current_residence' =>'string|nullable',
             'city' =>'string|required',

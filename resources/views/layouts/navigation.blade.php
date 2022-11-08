@@ -23,22 +23,20 @@
                             {{ __('Events') }}
                         </x-nav-link>
                     @endadmin
-                    <x-nav-link :href="route('profile')" :active="request()->routeIs('profile')">
+                    <x-nav-link :href="route('viewprofile')" :active="request()->routeIs('viewprofile')">
                         {{ __('Profile') }}
                     </x-nav-link>
 
                 </div>
 
             </div>
-            <div class="flex items-center justify-end space-x-8">
-                <p
-                    class="flex items-center text-sm font-medium text-gray-900 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                    Logged in as: {{ Auth::user()->name }}
-                </p>
+            <div class="flex items-center justify-end space-x-8 ">
+
                 <form action="{{ route('logout') }}" method="POST">
                     @csrf
 
-                    <button class=" bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded shadow-lg">
+                    <button
+                        class=" hidden md:block bg-red-700 hover:bg-red-900 text-white font-bold py-2 px-4 rounded shadow-lg">
                         Logout</button>
                 </form>
             </div>
@@ -97,13 +95,18 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('news.index')" :active="request()->routeIs('news.index')">
-                {{ __('News') }}
-            </x-responsive-nav-link>
-            <x-responsive-nav-link :href="route('profile')">
+            @admin
+                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('news.index')" :active="request()->routeIs('news.index')">
+                    {{ __('News') }}
+                </x-responsive-nav-link>
+                <x-responsive-nav-link :href="route('events.index')" :active="request()->routeIs('events.index')">
+                    {{ __('Events') }}
+                </x-responsive-nav-link>
+            @endadmin
+            <x-responsive-nav-link :href="route('viewprofile')" :active="request()->routeIs('viewprofile')">
                 {{ __('Profile') }}
             </x-responsive-nav-link>
         </div>

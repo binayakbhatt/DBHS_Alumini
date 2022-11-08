@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'batch' => $request->batch,
             'city' => $request->city, 
-            'user_type' => 'User',
+            'user_type' => 'Alumnus',
             'password' => Hash::make($request->password),
             
         ]);
