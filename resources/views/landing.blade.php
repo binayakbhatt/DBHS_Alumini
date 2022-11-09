@@ -3,13 +3,14 @@
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-gradient-to-r from-violet-500 to-fuchsia-500 overflow-hidden sm:rounded-lg">
+            <div class="mt-14 bg-white overflow-hidden sm:rounded-lg">
                 <div class="p-6 ">
 
 
 
-                    <div class="flex items-center justify-center m-5 p-5 ">
-                        <h1 class="text-5xl font-bold">Don Bosco School Alumni Association, Haflong </h1>
+                    <div
+                        class="flex items-center justify-center bg-gradient-to-r from-purple-500 to-blue-700 b-5 shadow-lg p-3">
+                        <h1 class="text-2xl md:text-3xl text-white font-bold"> Don Bosco High School Alumni Association, Haflong </h1>
                     </div>
 
                     @if ($latest_event)

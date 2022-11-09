@@ -18,8 +18,8 @@
 </head>
 
 <body class="font-sans antialiased">
-    <div class="min-h-screen bg-gradient-to-r from-violet-500 to-fuchsia-500">
-        @include('layouts.front-nav')
+    <div class="min-h-screen bg-gradient-to-r from-purple-500 to-blue-500">
+        @include('layouts.navbar')
 
 
 
