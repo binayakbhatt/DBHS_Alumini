@@ -16,6 +16,9 @@
                     <x-nav-link :href="route('front.news')" :active="request()->routeIs('front.news')">
                         {{ __('News') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('front.alumni')" :active="request()->routeIs('front.alumni')">
+                        {{ __('Alumni') }}
+                    </x-nav-link>
 
 
                 </div>
@@ -63,6 +66,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('front.news')" :active="request()->routeIs('front.news')">
                 {{ __('News') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('front.alumni')" :active="request()->routeIs('front.alumni')">
+                {{ __('Alumni') }}
             </x-responsive-nav-link>
 
         </div>

@@ -7,8 +7,6 @@
                 <div class="p-6 bg-white border-b border-gray-200">
 
 
-
-
                     <div class="flex justify-center">
                         <div class="block rounded-lg shadow-lg bg-white max-w-full text-center">
                             <div class="py-3 px-6 border-b border-gray-300">

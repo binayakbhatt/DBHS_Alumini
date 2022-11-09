@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Alumni\AlumniController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Front\EventController;
 use App\Http\Controllers\Front\LandingController;
 use App\Http\Controllers\Front\NewsController;
 
@@ -25,6 +26,9 @@ Route::get('/newslist',[NewsController::class, 'list'])->name('front.news');
 Route::get('/news-detail/{slug}',[NewsController::class, 'news_detail'])->name('front.news-detail');
 Route::get('/alumni',[AlumniController::class, 'getAlumni'] )->name('front.alumni');
 Route::get('/alumni-detail/{id}',[AlumniController::class, 'alumni_detail'])->name('front.alumni-detail');
+Route::get('/eventlist',[EventController::class, 'event_list'])->name('front.event');
+Route::get('/event-detail/{id}',[EventController::class, 'event_detail'])->name('front.event-detail');
+
 
 
 
