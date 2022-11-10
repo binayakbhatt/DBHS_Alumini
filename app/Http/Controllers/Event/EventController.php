@@ -16,16 +16,12 @@ class EventController extends Controller
      * @return \Illuminate\Http\Response
      */    
     
-    public function __construct()
-    {
-        $this->authorizeResource(Event::class, 'event');
-    }
-   
+  
 
     public function index()
     {
 
-        
+        $this->authorize('viewAny', Event::class);
         $events = Event::latest()->get();
         return view('events.index', compact('events'));
     }
@@ -37,7 +33,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        $this->authorize('admin');
+        $this->authorize('create', Event::class);
         return view ('events.create');
     }
 
@@ -49,7 +45,7 @@ class EventController extends Controller
      */
     public function store(EventPostRequest $request)
     {
-       
+       $this->authorize('create', Event::class);
         Event::create([
             'name' => Str::ucfirst($request->name),
             'slug' => Str::slug($request->name, '-'),
@@ -69,7 +65,7 @@ class EventController extends Controller
      */
     public function show($slug)
     {
-       
+       $this->authorize('view', Event::class);
         $event_single = Event::where('slug', $slug)->first();
         return view ('events.show',compact('event_single'));
     }
@@ -82,7 +78,7 @@ class EventController extends Controller
      */
     public function edit($id)
     {
-       
+       $this->authorize('update', Event::class);
         $event_single = Event::where('id', $id)->first();
         return view ('events.edit',compact('event_single'));
     }
@@ -96,7 +92,7 @@ class EventController extends Controller
      */
     public function update(EventUpdateRequest $request, $id)
     {
-       
+       $this->authorize('update', Event::class);
         $events = Event::findorFail($id);
         $validated = $request->validated();
         $events->fill($validated);
@@ -114,7 +110,7 @@ class EventController extends Controller
      */
     public function destroy($id)
     {
-       
+       $this->authorize('delete', Event::class);
         $events = Event::findorFail($id);
         $events->delete();
          return redirect()->back()->with('success', 'Event deleted Successfully');

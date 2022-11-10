@@ -31,7 +31,7 @@ class EventPolicy
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function view(User $user, Event $event)
+    public function view(User $user)
     {
         return $this->viewAny($user);
     }
@@ -54,7 +54,7 @@ class EventPolicy
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, Event $event)
+    public function update(User $user)
     {
         return $this->viewAny($user);
     }
@@ -66,7 +66,7 @@ class EventPolicy
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function delete(User $user, Event $event)
+    public function delete(User $user)
     {
          return $this->viewAny($user);
     }
@@ -78,7 +78,7 @@ class EventPolicy
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function restore(User $user, Event $event)
+    public function restore(User $user)
     {
          return $this->viewAny($user);
     }
@@ -90,7 +90,7 @@ class EventPolicy
      * @param  \App\Models\Event  $event
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function forceDelete(User $user, Event $event)
+    public function forceDelete(User $user)
     {
          return $this->viewAny($user);
     }
