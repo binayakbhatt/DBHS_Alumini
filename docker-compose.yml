@@ -3,10 +3,10 @@ services:
   webapp:
     container_name: webapp
     restart: always
-    env_file: .env
+    #env_file: .env
     build: .
     volumes:
-      - ./db:/apps/db/
+      - ./database:/apps/database
     networks:
       - db_network
       - web_network
