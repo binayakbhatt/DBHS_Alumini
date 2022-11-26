@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  webapp:
+    container_name: webapp
+    restart: always
+    #env_file: .env
+    build: .
+    volumes:
+      - ./database:/apps/database
+    networks:
+      - db_network
+      - web_network
+  nginx:
+    container_name: nginx
+    restart: always
+    image: "nginx:latest"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      #- ./certbot/www:/var/www/certbot/:ro
+      #- ./certbot/conf/:/etc/nginx/ssl/:ro
+    networks:
+      - web_network
+    depends_on: 
+      - webapp
+    restart: always
+  #certbot:
+  #  image: certbot/certbot:latest
+  #  volumes:
+  #    - ./certbot/www/:/var/www/certbot/:rw
+  #    - ./certbot/conf/:/etc/letsencrypt/:rw
+networks:
+  db_network:
+    driver: bridge
+  web_network:
+    driver: bridge
